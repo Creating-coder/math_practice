@@ -2,7 +2,6 @@ import math
 import random
 import time
 
-# HW2: add a random other TYPE of question: e.g. find square root of x, where x=y^2 for y between 10 and 40
 # HW3: exercise 100 questions
 # HW4 score at least 80.
 if __name__ == "__main__":
@@ -20,8 +19,8 @@ if __name__ == "__main__":
             z = y/x
         time_t = 0
         rel = 0
-        a = 0.85 * z
-        b = z * 1.15
+        a = 0.95 * z
+        b = z * 1.05
         forever = True
         estimation = 0
         t = time.time()
