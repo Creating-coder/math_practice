@@ -13,7 +13,11 @@ if __name__ == "__main__":
     while True:
         x = random.randint(100,999)
         y = random.randint(10000,99999)
-        z = x*y
+        operation_decider = random.randint(0,1)
+        if operation_decider == 1:
+            z = x*y
+        else:
+            z = y/x
         time_t = 0
         rel = 0
         a = 0.85 * z
@@ -22,7 +26,10 @@ if __name__ == "__main__":
         estimation = 0
         t = time.time()
         while forever:
-            print(f'Estimate the product of {x} and {y}')
+            if operation_decider == 1:
+                print(f'Estimate the product of {x} and {y}')
+            else:
+                print(f'Estimate {y} divided by {x}')
             estimation = input()
             time_t = time.time() - t
             if estimation == "exit":
