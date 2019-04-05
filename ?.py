@@ -10,15 +10,19 @@ if __name__ == "__main__":
     total_t = 0
     total_rel = 0
     while True:
-        question_decider = random.randint(0,1)
-        if question_decider == 1:
-            operation_decider = random.randint(0, 1)
-            if operation_decider == 1:
+        question_decider = random.randint(0,2)
+        if question_decider == 0:
+            operation_decider = random.randint(0, 2)
+            if operation_decider == 0:
                 x = random.randint(100000, 999999)
+                z = pow(x, 1 / 2)
+            elif operation_decider == 1:
+                x = random.randint(1000000, 9999999)
+                z = pow(x, 1 / 2)
             else:
                 x = random.randint(1000000, 9999999)
-            z = pow(x, 1 / 2)
-        else:
+                z = pow(x, 1 / 3)
+        elif question_decider == 1:
             y = random.randint(10000,99999)
             operation_decider = random.randint(0, 2)
             if operation_decider == 0:
@@ -30,6 +34,14 @@ if __name__ == "__main__":
             else:
                 x = random.randint(100, 999)
                 z = y/x
+        else:
+            operation_decider = random.randint(0, 1)
+            if operation_decider == 0:
+                x = random.randint(10,99)
+                z = x*x
+            else:
+                x = random.randint(1, 20)
+                z = x * x * x
         time_t = 0
         rel = 0
         a = 0.95 * z
@@ -38,13 +50,21 @@ if __name__ == "__main__":
         estimation = 0
         t = time.time()
         while forever:
-            if question_decider == 1:
-                print(f'Estimate the square root of {x}')
-            else:
+            if question_decider == 0:
+                if operation_decider == 2:
+                    print(f'Estimate the cube root of {x}')
+                else:
+                    print(f'Estimate the square root of {x}')
+            elif question_decider == 1:
                 if operation_decider == 0:
                     print(f'Estimate the product of {x} and {y}')
                 else:
                     print(f'Estimate {y} divided by {x}')
+            else:
+                if operation_decider == 0:
+                    print(f'Compute the square root of {z}')
+                else:
+                    print(f'Compute the cubic root of {z}')
             estimation = input()
             time_t = time.time() - t
             if estimation == "exit":
